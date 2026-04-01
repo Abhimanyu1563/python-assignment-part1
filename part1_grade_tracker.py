@@ -140,3 +140,52 @@ updated_average = updated_total / len(marks)
 print("\n--- Updated Results ---")
 print(f"New subjects added: {new_count}")
 print(f"Updated Average: {updated_average:.2f}")
+
+
+# ---------------- TASK 3 ----------------
+
+class_data = [
+    ("Ayesha Sharma", [88, 72, 95, 60, 78]),
+    ("Rohit Verma", [55, 68, 49, 72, 61]),
+    ("Priya Nair", [91, 85, 88, 94, 79]),
+    ("Karan Mehta", [40, 55, 38, 62, 50]),
+    ("Sneha Pillai", [75, 80, 70, 68, 85]),
+]
+
+print("\n--- Class Report ---")
+print(f"{'Name':<15} | {'Average':<7} | Status")
+print("-" * 40)
+
+pass_count = 0
+fail_count = 0
+
+topper_name = ""
+topper_avg = 0
+
+total_class_avg = 0
+
+for name, marks in class_data:
+    avg = sum(marks) / len(marks)
+
+    if avg >= 60:
+        status = "Pass"
+        pass_count += 1
+    else:
+        status = "Fail"
+        fail_count += 1
+
+    if avg > topper_avg:
+        topper_avg = avg
+        topper_name = name
+
+    total_class_avg += avg
+
+    print(f"{name:<15} | {avg:>6.2f} | {status}")
+
+class_average = total_class_avg / len(class_data)
+
+print("\n--- Summary ---")
+print(f"Passed: {pass_count}")
+print(f"Failed: {fail_count}")
+print(f"Topper: {topper_name} ({topper_avg:.2f})")
+print(f"Class Average: {class_average:.2f}")
