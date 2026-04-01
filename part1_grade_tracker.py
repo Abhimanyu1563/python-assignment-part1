@@ -56,3 +56,87 @@ for student in cleaned_students:
     if student["roll"] == 103:
         print(student["name"].upper())
         print(student["name"].lower())
+
+
+# ---------------- TASK 2 ----------------
+
+student_name = "Ayesha Sharma"
+subjects = ["Math", "Physics", "CS", "English", "Chemistry"]
+marks = [88, 72, 95, 60, 78]
+
+print("\n--- Marks Analysis ---")
+
+for i in range(len(subjects)):
+    subject = subjects[i]
+    mark = marks[i]
+
+    # Assign grade
+    if mark >= 90:
+        grade = "A+"
+    elif mark >= 80:
+        grade = "A"
+    elif mark >= 70:
+        grade = "B"
+    elif mark >= 60:
+        grade = "C"
+    else:
+        grade = "F"
+
+    print(f"{subject}: {mark} → {grade}")
+
+# Total marks
+total = sum(marks)
+
+# Average marks
+average = total / len(marks)
+
+# Highest scoring subject
+max_mark = max(marks)
+max_index = marks.index(max_mark)
+highest_subject = subjects[max_index]
+
+# Lowest scoring subject
+min_mark = min(marks)
+min_index = marks.index(min_mark)
+lowest_subject = subjects[min_index]
+
+print("\n--- Summary ---")
+print(f"Total Marks: {total}")
+print(f"Average Marks: {average:.2f}")
+print(f"Highest: {highest_subject} ({max_mark})")
+print(f"Lowest: {lowest_subject} ({min_mark})")
+
+# Adding new subjects
+new_count = 0
+
+while True:
+    subject = input("\nEnter subject name (or type 'done' to stop): ")
+
+    if subject.lower() == "done":
+        break
+
+    mark_input = input("Enter marks (0-100): ")
+
+    # Validate input
+    if not mark_input.isdigit():
+        print("Invalid input! Marks must be a number.")
+        continue
+
+    mark = int(mark_input)
+
+    if mark < 0 or mark > 100:
+        print("Invalid input! Marks must be between 0 and 100.")
+        continue
+
+    # Add valid data
+    subjects.append(subject)
+    marks.append(mark)
+    new_count += 1
+
+# Updated results
+updated_total = sum(marks)
+updated_average = updated_total / len(marks)
+
+print("\n--- Updated Results ---")
+print(f"New subjects added: {new_count}")
+print(f"Updated Average: {updated_average:.2f}")
